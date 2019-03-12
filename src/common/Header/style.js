@@ -47,11 +47,19 @@ export const SearchWrapper = styled.div`
   float: left;
   .iconfont {
     position: absolute;
-    right: 5px;
-    bottom: 5px;
+    right: 4px;
+    bottom: 4px;
     width: 30px;
+    border-radius: 50%;
     line-height: 30px;
     text-align: center;
+  }
+  &.focused>input{
+    width: 240px;
+  }
+  &.focused>i{
+    background-color: #969696;
+    color: #fff;
   }
 `;
 export const NavSearch = styled.input.attrs({
@@ -60,16 +68,25 @@ export const NavSearch = styled.input.attrs({
   float: left;
   margin-left: 20px;
   margin-top: 9px;
-  padding: 0 30rpx 0 20px;
+  padding: 0 30px 0 20px;
   box-sizing: border-box;
-  width: 160rpx;
+  width: 160px;
   height: 38px;
   border: none;
   outline: none;
   border-radius: 40px;
   font-size: 14px;
-  color: #777;
+  color: #666;
   background-color: #eee;
+  &.slide-enter, &.slide-exit{
+    transition: all 0.5s ease-in-out;
+  }
+  &.slide-enter-active{
+    width: 240px;
+  }
+  &.slide-exit-active{
+    width: 160px;
+  }
   &::placeholder {
     color: #999;
   }
