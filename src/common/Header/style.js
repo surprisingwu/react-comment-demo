@@ -92,6 +92,75 @@ export const NavSearch = styled.input.attrs({
   }
 `;
 
+export const SearchInfoWrapper = styled.div`
+  position: absolute;
+  top: 56px;
+  left: 20px;
+  padding: 20px 20px 10px;
+  width: 240px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  background-color: #fff;
+  box-shadow: 0 0 8px rgba(0,0,0,.2);
+  &::before {
+    position: absolute;
+    content: "";
+    left: 27px;
+    width: 10px;
+    height: 10px;
+    transform: rotate(45deg);
+    top: -5px;
+    z-index: -1;
+    background-color: #fff;
+    box-shadow: 0 0 8px rgba(0,0,0,.2);
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: 12px solid transparent;
+    border-bottom-color: #fff;
+    left: 20px;
+    bottom: 99%;
+  }
+`;
+
+export const SearchInfoHeader = styled.div`
+  height: 20px;
+`;
+export const SearchInfoTitle = styled.span`
+  float: left;
+  font-size: 14px;
+  color: #969696;
+`;
+
+export const SearchInfoChange = styled.a`
+  float: right;
+  font-size: 13px;
+  color: #969696;
+  &:hover{
+    color: #2f2f2f;
+  }
+`;
+export const SearchInfoList = styled.div`
+  margin-top: 10px;
+`;
+export const SearchInfoItem = styled.div`
+  display: inline-block;
+  margin-right: 10px;
+  line-height: 28px;
+`;
+export const SearchInfoContent = styled.a`
+  padding: 2px 6px;
+  font-size: 12px;
+  color: #787878;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  &:hover {
+    color: #2f2f2f;
+  }
+`;
 export const Addition = styled.div`
   position: absolute;
   top: 0;
