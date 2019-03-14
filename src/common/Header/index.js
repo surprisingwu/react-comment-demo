@@ -20,7 +20,7 @@ import {
 import { connect } from 'react-redux'
 import { creators } from './store'
 
-const getFocusArea = (show, list=[]) => {
+const getFocusArea = (show, list = []) => {
   if (show) {
     return (
       <SearchInfoWrapper>
@@ -29,11 +29,11 @@ const getFocusArea = (show, list=[]) => {
           <SearchInfoChange>换一批</SearchInfoChange>
         </SearchInfoHeader>
         <SearchInfoList>
-          {list.map(item => 
-          <SearchInfoItem>
+          {list.map((item, i) => (
+            <SearchInfoItem key={i}>
               <SearchInfoContent>{item}</SearchInfoContent>
-          </SearchInfoItem>
-          )}
+            </SearchInfoItem>
+          ))}
         </SearchInfoList>
       </SearchInfoWrapper>
     )
@@ -75,12 +75,13 @@ const Header = props => {
 const mapStateToProps = state => {
   return {
     focused: state.getIn(['header', 'focused']),
-    searchInfo: state.getIn(['header', 'searchInfo']),
+    searchInfo: state.getIn(['header', 'searchInfo'])
   }
 }
 const mapDispatchToProps = dispatch => {
   return {
     handleSearchFocus() {
+      dispatch(creators.getSearchInfo())
       dispatch(creators.setSearchFocus())
     },
     handleSearchBlur() {
