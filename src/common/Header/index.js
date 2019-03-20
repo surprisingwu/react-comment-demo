@@ -20,16 +20,27 @@ import {
 import { connect } from 'react-redux'
 import { creators } from './store'
 
-const getFocusArea = (show, list = []) => {
-  if (show) {
+const SearchInfoToast = props => {
+  const {
+    focused = false,
+    pageList = [],
+    mouseIn = false,
+    handleEnter,
+    handleLeave,
+    handleChangePage
+  } = props
+  if (focused || mouseIn) {
     return (
-      <SearchInfoWrapper>
+      <SearchInfoWrapper
+        onMouseEnter={handleEnter}
+        onMouseLeave={handleLeave}
+      >
         <SearchInfoHeader>
           <SearchInfoTitle>热门搜索</SearchInfoTitle>
-          <SearchInfoChange>换一批</SearchInfoChange>
+          <SearchInfoChange onClick={handleChangePage}>换一批</SearchInfoChange>
         </SearchInfoHeader>
         <SearchInfoList>
-          {list.map((item, i) => (
+          {pageList.map((item, i) => (
             <SearchInfoItem key={i}>
               <SearchInfoContent>{item}</SearchInfoContent>
             </SearchInfoItem>
@@ -43,7 +54,25 @@ const getFocusArea = (show, list = []) => {
 }
 
 const Header = props => {
-  const { focused, handleSearchFocus, handleSearchBlur, searchInfo } = props
+  const {
+    focused,
+    handleSearchFocus,
+    handleSearchBlur,
+    searchInfo,
+    page,
+    mouseIn,
+    handleEnter,
+    handleLeave,
+    handleChangePage
+  } = props
+  const newList = searchInfo.toJS()
+  const pageList = []
+  for (let i = (page - 1) * 10; i < page * 10; i++) {
+    const item = newList[i]
+    if (item) {
+      pageList.push(newList[i])
+    } 
+  }
   return (
     <HeaderWrapper>
       <Logo />
@@ -59,7 +88,14 @@ const Header = props => {
             <NavSearch onFocus={handleSearchFocus} onBlur={handleSearchBlur} />
           </CSSTransition>
           <i className="iconfont">&#xe623;</i>
-          {getFocusArea(focused, searchInfo)}
+          <SearchInfoToast
+            focused={focused}
+            pageList={pageList}
+            mouseIn={mouseIn}
+            handleEnter={handleEnter}
+            handleLeave={handleLeave}
+            handleChangePage={handleChangePage}
+          />
         </SearchWrapper>
       </Nav>
       <Addition>
@@ -75,7 +111,9 @@ const Header = props => {
 const mapStateToProps = state => {
   return {
     focused: state.getIn(['header', 'focused']),
-    searchInfo: state.getIn(['header', 'searchInfo'])
+    searchInfo: state.getIn(['header', 'searchInfo']),
+    page: state.getIn(['header', 'page']),
+    mouseIn: state.getIn(['header', 'mouseIn'])
   }
 }
 const mapDispatchToProps = dispatch => {
@@ -86,6 +124,15 @@ const mapDispatchToProps = dispatch => {
     },
     handleSearchBlur() {
       dispatch(creators.setSearchBlur())
+    },
+    handleEnter() {
+      dispatch(creators.setMouseEnter())
+    },
+    handleLeave() {
+      dispatch(creators.setMouseLeave())
+    },
+    handleChangePage() {
+      dispatch(creators.setSearchPage())
     }
   }
 }
