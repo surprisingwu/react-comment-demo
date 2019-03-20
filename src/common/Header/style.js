@@ -45,7 +45,7 @@ export const NavItem = styled.div`
 export const SearchWrapper = styled.div`
   position: relative;
   float: left;
-  .iconfont {
+  .zoom {
     position: absolute;
     right: 4px;
     bottom: 4px;
@@ -141,6 +141,13 @@ export const SearchInfoChange = styled.a`
   color: #969696;
   &:hover{
     color: #2f2f2f;
+  }
+  .spin{
+    display: inline-block;
+    font-size: 20px;
+    transition: all 0.2s ease-in;
+    transform-origin: center center;
+    transform: rotate(80deg);
   }
 `;
 export const SearchInfoList = styled.div`

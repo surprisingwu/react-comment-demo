@@ -17,7 +17,10 @@ const reducer = (state = defaultState, action) => {
     case types.SET_SEARCH_BLUR:
       return state.set('focused', false);
     case types.GET_SEARCH_INFO:
-      return state.set('searchInfo', action.list).set('totalPage', action.totalPage);
+    return state.merge({
+      searchInfo: action.list,
+      totalPage: action.totalPage
+    })
     case types.SET_MOUSE_ENTER:
       return state.set('mouseIn', true);
     case types.SET_MOUSE_LEAVE:
@@ -25,10 +28,7 @@ const reducer = (state = defaultState, action) => {
     case types.SET_SEARCH_PAGE:
       const newState = state.toObject()
       let { page, totalPage } = newState
-      page ++
-      if (page > totalPage) { 
-        page = 1
-      }
+      page = page >= totalPage ? 1 : page+1;
       return state.set('page', page)
     default:
       return state
