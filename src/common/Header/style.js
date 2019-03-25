@@ -139,6 +139,7 @@ export const SearchInfoChange = styled.a`
   float: right;
   font-size: 13px;
   color: #969696;
+  cursor: pointer;
   &:hover{
     color: #2f2f2f;
   }

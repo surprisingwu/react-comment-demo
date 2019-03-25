@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import {
   HeaderWrapper,
@@ -20,8 +20,7 @@ import {
 import { connect } from 'react-redux'
 import { creators } from './store'
 
-
-class Header extends Component{
+class Header extends Component {
   getSearchArea() {
     const {
       focused,
@@ -38,7 +37,7 @@ class Header extends Component{
       const item = newList[i]
       if (item) {
         pageList.push(newList[i])
-      } 
+      }
     }
     if (focused || mouseIn) {
       return (
@@ -48,9 +47,20 @@ class Header extends Component{
         >
           <SearchInfoHeader>
             <SearchInfoTitle>热门搜索</SearchInfoTitle>
-            <SearchInfoChange onClick={()=> {handleChangePage(this.spinIcon)}}>
-            <i ref={(icon) => {this.spinIcon = icon}} className="iconfont spin">&#xe689;</i>
-            换一批
+            <SearchInfoChange
+              onClick={() => {
+                handleChangePage(this.spinIcon)
+              }}
+            >
+              <i
+                ref={icon => {
+                  this.spinIcon = icon
+                }}
+                className="iconfont spin"
+              >
+                &#xe689;
+              </i>
+              换一批
             </SearchInfoChange>
           </SearchInfoHeader>
           <SearchInfoList>
@@ -69,8 +79,9 @@ class Header extends Component{
   render() {
     const {
       focused,
+      searchInfo,
       handleSearchFocus,
-      handleSearchBlur,
+      handleSearchBlur
     } = this.props
     return (
       <HeaderWrapper>
@@ -84,7 +95,12 @@ class Header extends Component{
           </NavItem>
           <SearchWrapper className={focused ? 'focused' : ''}>
             <CSSTransition in={focused} timeout={500} classNames="slide">
-              <NavSearch onFocus={handleSearchFocus} onBlur={handleSearchBlur} />
+              <NavSearch
+                onFocus={() => {
+                  handleSearchFocus(searchInfo)
+                }}
+                onBlur={handleSearchBlur}
+              />
             </CSSTransition>
             <i className="iconfont zoom">&#xe623;</i>
             {this.getSearchArea()}
@@ -92,13 +108,12 @@ class Header extends Component{
         </Nav>
         <Addition>
           <Button className="write">
-            <i className="iconfont">&#xe61c;</i> {' '}
-            写文章
+            <i className="iconfont">&#xe61c;</i> 写文章
           </Button>
           <Button className="sign">注册</Button>
         </Addition>
       </HeaderWrapper>
-    ) 
+    )
   }
 }
 
@@ -112,8 +127,8 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = dispatch => {
   return {
-    handleSearchFocus() {
-      dispatch(creators.getSearchInfo())
+    handleSearchFocus(list) {
+      (list.size === 0) && dispatch(creators.getSearchInfo());
       dispatch(creators.setSearchFocus())
     },
     handleSearchBlur() {
@@ -126,13 +141,13 @@ const mapDispatchToProps = dispatch => {
       dispatch(creators.setMouseLeave())
     },
     handleChangePage(spin) {
-      let originalDeg = spin.style.transform.replace(/[^0-9]/ig,'')
-      if(originalDeg) {
+      let originalDeg = spin.style.transform.replace(/[^0-9]/gi, '')
+      if (originalDeg) {
         originalDeg = parseInt(originalDeg, 10)
       } else {
         originalDeg = 0
       }
-      spin.style.transform = `rotate(${360+originalDeg}deg)`
+      spin.style.transform = `rotate(${360 + originalDeg}deg)`
       dispatch(creators.setSearchPage())
     }
   }
