@@ -102,6 +102,7 @@ export const SearchInfoWrapper = styled.div`
   border-radius: 4px;
   background-color: #fff;
   box-shadow: 0 0 8px rgba(0,0,0,.2);
+  z-index: 999;
   &::before {
     position: absolute;
     content: "";
