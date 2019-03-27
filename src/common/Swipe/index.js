@@ -18,51 +18,36 @@ export default class Swipe extends Component {
   constructor() {
     super();
     this.state = {
-      list: this.computedList(MockData),
+      list: MockData,
       activeIndex: 0
     };
   }
-  computedList(list = []) {
-    list = Array.from(list)
-    const endItem = list.slice(-1)
-    const startItem = list.slice(0, 1)
-    list.push(startItem[0])
-    list.unshift(endItem[0])
-    console.log(list);
-    return list
-  }
   componentDidMount() {
-    const {width} = this.wrapper.getBoundingClientRect()
-    const containerEl = this.els
-    const children = containerEl.children;
-    const len = children.length;
-    for (let key = 0; key < len; key++) { 
-      const _currentLi_ = children[key]
-      _currentLi_.style.width = width + 'px'
-    }
-    containerEl.style.width = `${len*width}px`
+    const { list } = this.state
+    const len = list.length
+    const lis = this.els.children
     const callBack = () => {
       let { activeIndex } = this.state;
-      if (activeIndex <len - 1) {
-        activeIndex++
-      } else {
+      lis[activeIndex].classList.remove('active')
+      if (activeIndex >= len - 1) {
         activeIndex = 0
+      } else {
+        activeIndex ++
       }
-      console.log(activeIndex)
-      containerEl.style.left = `-${activeIndex * width}px`;
+      lis[activeIndex].classList.add('active')
       this.setState({
         activeIndex
       });
     };
-    this.intervalTimer = setInterval(callBack, 2000);
+    this.intervalTimer = setInterval(callBack, 5000);
   }
   render() {
-    const { list } = this.state;
+    const { list, activeIndex } = this.state;
     return (
       <SwipeWrapper ref={(wrapper) => {this.wrapper = wrapper}}>
         <SwipeContainer ref={(els) => {this.els = els}}>
         {list.map((item, i) => (
-          <SwipeItem key={i} index={i}>
+          <SwipeItem key={i} index={i} className={i === activeIndex?'active':''}>
             <SwipeContent>
               <img className="img" alt="" src={item.src} />
             </SwipeContent>

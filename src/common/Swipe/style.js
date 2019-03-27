@@ -7,17 +7,19 @@ export const SwipeWrapper = styled.div`
   overflow: hidden;
 `;
 export const SwipeContainer = styled.ul`
-  position: absolute;
+  position: relative;
   height: 100%;
   white-space: nowrap;
-  transition: all 0.3s ease-in;
-  top: 0;
-  bottom: 0;
 `;
 export const SwipeItem = styled.li`
-  position: relative;
-  float: left;
+  position: absolute;
   height: 100%;
+  width: 100%;
+  transition: opacity 0.3s ease-in;
+  opacity: 0;
+  &.active{
+    opacity: 1;
+  }
 `;
 export const SwipeContent = styled.a.attrs({
   href: '#'

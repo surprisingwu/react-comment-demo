@@ -20,3 +20,10 @@ export const HomeRight = styled.div `
   float: right;
   width: 240px;
 `;
+export const ArticleListWrapper = styled.div``;
+export const ArticleItem = styled.div``;
+export const ArticleTitle = styled.h3``;
+export const ArticleDesc = styled.p``;
+export const ArticlePic = styled.img.attrs({
+  alt: ''
+})``;
