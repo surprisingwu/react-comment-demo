@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import {
   ArticleListWrapper,
   ArticleItem,
+  ArticleContent,
   ArticleTitle,
   ArticleDesc,
   ArticlePic
@@ -11,12 +12,15 @@ import {
 class List extends Component {
   render() {
     const {articleList} = this.props
+    console.log(articleList);
     return (
       <ArticleListWrapper>
         {articleList.map((item, i) => (
-          <ArticleItem>
-            <ArticleTitle>{item.get('title')}</ArticleTitle>
-            <ArticleDesc>{item.get('desc')}</ArticleDesc>
+          <ArticleItem key={i}>
+            <ArticleContent>
+              <ArticleTitle>{item.get('title')}</ArticleTitle>
+              <ArticleDesc>{item.get('desc')}</ArticleDesc>
+            </ArticleContent>
             {item.get('pic') ? <ArticlePic src={item.get('pic')}></ArticlePic>:null}  
           </ArticleItem>
         ))}
@@ -24,8 +28,9 @@ class List extends Component {
     )
   }
 }
-const mapStateToProps = (state) => {
-  state.get('articleList')
+const mapStateToProps = (state) =>{
+  return {
+    articleList: state.getIn(['home','articleList'])
+  }
 }
-
 export default connect(mapStateToProps, null)(List)
