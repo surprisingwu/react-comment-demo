@@ -1,6 +1,7 @@
 import {
   GET_WRITERS,
-  LOAD_MORE_DATA
+  LOAD_MORE_DATA,
+  CHANGE_SHOW_SCROLL
 } from './actionTypes';
 import axios from 'axios';
 import {
@@ -54,5 +55,12 @@ export const getLoadMore = () => {
     }).catch(err => {
       console.log(err)
     })
+  }
+}
+
+export const changeScrollState = (flag) => {
+  return {
+    type: CHANGE_SHOW_SCROLL,
+    showScroll: flag
   }
 }

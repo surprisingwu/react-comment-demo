@@ -156,3 +156,13 @@ export const LoadMore = styled.div`
   color: #fff;
   cursor: pointer;
 `;
+export const ScrollToTop = styled.div`
+  position: fixed;
+  right: 40px;
+  bottom: 40px;
+  z-index: 9999;
+  border: 1px solid #dcdcdc;
+  background-color: #fff;
+  font-size: 14px;
+  padding: 10px;
+`;

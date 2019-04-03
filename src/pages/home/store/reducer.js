@@ -1,7 +1,7 @@
 import {
   fromJS
 } from 'immutable';
-import { GET_WRITERS, LOAD_MORE_DATA} from './actionTypes';
+import { GET_WRITERS, LOAD_MORE_DATA, CHANGE_SHOW_SCROLL} from './actionTypes';
 
 const defaultData = fromJS({
   articleList:[
@@ -46,6 +46,7 @@ const defaultData = fromJS({
       id: 6
     },
   ],
+  showScroll: false,
   writers: []
 })
 
@@ -56,6 +57,8 @@ export default (state = defaultData, action) => {
     case LOAD_MORE_DATA:
       const _list_ = state.get('articleList').concat(fromJS(action.list))
       return state.set('articleList', _list_)
+    case CHANGE_SHOW_SCROLL:
+      return state.set('showScroll',action.showScroll)
     default:
       return state
   }
