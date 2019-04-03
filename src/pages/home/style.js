@@ -143,3 +143,16 @@ export const WriterItem = styled.div`
     color: #42c02e;
   }
 `;
+
+export const LoadMore = styled.div`
+  margin: 30px auto;
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  font-size: 15px;
+  border-radius: 20px;
+  background-color: #d5d5d5;
+  color: #fff;
+  cursor: pointer;
+`;

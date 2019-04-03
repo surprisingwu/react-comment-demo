@@ -1,41 +1,44 @@
-[{
-  "id": 8972166,
-  "slug": "b91cc2d507d0",
-  "nickname": "冰千里",
-  "avatar_source": "http://upload.jianshu.io/users/upload_avatars/8972166/2a0fb78d-6417-47cb-a57c-2ce4a7b92609.jpg",
-  "total_likes_count": 8325,
-  "total_wordage": 508838,
-  "is_following_user": false
-}, {
-  "id": 7290998,
-  "slug": "4062aaeba322",
-  "nickname": "念远怀人",
-  "avatar_source": "http://upload.jianshu.io/users/upload_avatars/7290998/f64f5ef0-def0-4b26-beb3-b9d88f060ba0.jpg",
-  "total_likes_count": 11287,
-  "total_wordage": 668766,
-  "is_following_user": false
-}, {
-  "id": 12665193,
-  "slug": "757b5f9f910b",
-  "nickname": "宇文歡",
-  "avatar_source": "http://upload.jianshu.io/users/upload_avatars/12665193/828a449f-efbb-4540-b0af-f6c314810515.jpg",
-  "total_likes_count": 2461,
-  "total_wordage": 283226,
-  "is_following_user": false
-}, {
-  "id": 4802366,
-  "slug": "13cba2dc6b23",
-  "nickname": "汪波_偶遇科学",
-  "avatar_source": "http://upload.jianshu.io/users/upload_avatars/4802366/4f86b75d-b61b-4126-8be4-87a151c9cd28.jpg",
-  "total_likes_count": 2046,
-  "total_wordage": 311307,
-  "is_following_user": false
-}, {
-  "id": 5545154,
-  "slug": "898bb4ca481d",
-  "nickname": "徐林Grace",
-  "avatar_source": "http://upload.jianshu.io/users/upload_avatars/5545154/1a3d5ed6-9ad1-44b3-9457-3e6a29dd1b71.jpg",
-  "total_likes_count": 5912,
-  "total_wordage": 718303,
-  "is_following_user": false
-}]
+{
+  "code": 200,
+  "data": [{
+    "id": 8972166,
+    "slug": "b91cc2d507d0",
+    "nickname": "冰千里",
+    "avatar_source": "http://upload.jianshu.io/users/upload_avatars/8972166/2a0fb78d-6417-47cb-a57c-2ce4a7b92609.jpg",
+    "total_likes_count": 8325,
+    "total_wordage": 508838,
+    "is_following_user": false
+  }, {
+    "id": 7290998,
+    "slug": "4062aaeba322",
+    "nickname": "念远怀人",
+    "avatar_source": "http://upload.jianshu.io/users/upload_avatars/7290998/f64f5ef0-def0-4b26-beb3-b9d88f060ba0.jpg",
+    "total_likes_count": 11287,
+    "total_wordage": 668766,
+    "is_following_user": false
+  }, {
+    "id": 12665193,
+    "slug": "757b5f9f910b",
+    "nickname": "宇文歡",
+    "avatar_source": "http://upload.jianshu.io/users/upload_avatars/12665193/828a449f-efbb-4540-b0af-f6c314810515.jpg",
+    "total_likes_count": 2461,
+    "total_wordage": 283226,
+    "is_following_user": false
+  }, {
+    "id": 4802366,
+    "slug": "13cba2dc6b23",
+    "nickname": "汪波_偶遇科学",
+    "avatar_source": "http://upload.jianshu.io/users/upload_avatars/4802366/4f86b75d-b61b-4126-8be4-87a151c9cd28.jpg",
+    "total_likes_count": 2046,
+    "total_wordage": 311307,
+    "is_following_user": false
+  }, {
+    "id": 5545154,
+    "slug": "898bb4ca481d",
+    "nickname": "徐林Grace",
+    "avatar_source": "http://upload.jianshu.io/users/upload_avatars/5545154/1a3d5ed6-9ad1-44b3-9457-3e6a29dd1b71.jpg",
+    "total_likes_count": 5912,
+    "total_wordage": 718303,
+    "is_following_user": false
+  }]
+}

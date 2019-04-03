@@ -1,7 +1,7 @@
 import {
   fromJS
 } from 'immutable';
-import { GET_WRITERS} from './actionTypes';
+import { GET_WRITERS, LOAD_MORE_DATA} from './actionTypes';
 
 const defaultData = fromJS({
   articleList:[
@@ -52,7 +52,10 @@ const defaultData = fromJS({
 export default (state = defaultData, action) => {
   switch (action.type) { 
     case GET_WRITERS:
-      return state.set('writers', action.writers);
+      return state.set('writers', fromJS(action.writers));
+    case LOAD_MORE_DATA:
+      const _list_ = state.get('articleList').concat(fromJS(action.list))
+      return state.set('articleList', _list_)
     default:
       return state
   }

@@ -16,10 +16,10 @@ class Writer extends Component {
         <WriterList>
           {this.props.writers.map((item, i) =>
             <WriterItem key={i}>
-              <img className='avatar' alt='' src={item.avatar_source} />
+              <img className='avatar' alt='' src={item.get('avatar_source')} />
               <div className='content'>
-                <h3 className='nickname'>{item.nickname}</h3>
-                <span className='desc'>写了{item.total_wordage}字 · {item.total_likes_count}喜欢</span>
+                <h3 className='nickname'>{item.get('nickname')}</h3>
+                <span className='desc'>写了{item.get('total_wordage')}字 · {item.get('total_likes_count')}喜欢</span>
               </div>
               <div className='opts'>
                 关注
