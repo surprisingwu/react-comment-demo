@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
-import { CSSTransition } from 'react-transition-group'
+import React, { Component } from 'react';
+import { CSSTransition } from 'react-transition-group';
+import {Link} from 'react-router-dom';
 import {
   HeaderWrapper,
   Logo,
@@ -16,9 +17,10 @@ import {
   SearchInfoItem,
   SearchInfoContent,
   SearchInfoHeader
-} from './style'
-import { connect } from 'react-redux'
-import { creators } from './store'
+} from './style';
+import { connect } from 'react-redux';
+import { creators } from './store';
+import {actionCreators} from '../../pages/login/store';
 
 class Header extends Component {
   getSearchArea() {
@@ -81,15 +83,21 @@ class Header extends Component {
       focused,
       searchInfo,
       handleSearchFocus,
-      handleSearchBlur
+      handleSearchBlur,
+      login
     } = this.props
     return (
       <HeaderWrapper>
-        <Logo />
-        <Nav>
-          <NavItem className="left active">首页</NavItem>
+        <Link to="/">
+          <Logo />
+        </Link>
+          <Nav>
+            <NavItem className="left active">首页</NavItem>
           <NavItem className="left">下载App</NavItem>
-          <NavItem className="right">登录</NavItem>
+          {login? 
+            <NavItem className="right" onClick={this.logoutHandler}>退出</NavItem>:
+            <Link to='/login'><NavItem className="right">登录</NavItem></Link>
+          }
           <NavItem className="right">
             <i className="iconfont">&#xe636;</i>
           </NavItem>
@@ -115,6 +123,10 @@ class Header extends Component {
       </HeaderWrapper>
     )
   }
+  logoutHandler= () => {
+    console.log(1)
+    this.props.logoutHandler()
+  }
 }
 
 const mapStateToProps = state => {
@@ -122,7 +134,8 @@ const mapStateToProps = state => {
     focused: state.getIn(['header', 'focused']),
     searchInfo: state.getIn(['header', 'searchInfo']),
     page: state.getIn(['header', 'page']),
-    mouseIn: state.getIn(['header', 'mouseIn'])
+    mouseIn: state.getIn(['header', 'mouseIn']),
+    login: state.getIn(['login','login'])
   }
 }
 const mapDispatchToProps = dispatch => {
@@ -149,6 +162,9 @@ const mapDispatchToProps = dispatch => {
       }
       spin.style.transform = `rotate(${360 + originalDeg}deg)`
       dispatch(creators.setSearchPage())
+    },
+    logoutHandler() {
+      dispatch(actionCreators.setLogout())
     }
   }
 }

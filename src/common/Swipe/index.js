@@ -40,6 +40,9 @@ export default class Swipe extends Component {
     };
     this.intervalTimer = setInterval(callBack, 5000);
   }
+  componentWillUnmount() {
+    clearInterval(this.intervalTimer)
+  }
   render() {
     const { list, activeIndex } = this.state;
     return (

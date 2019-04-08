@@ -1,4 +1,10 @@
-import reducer from './reducer';
+import homeReducer from './reducer';
+import * as constants from './actionTypes';
+import * as actionCreators from './actionCreators';
 
 
-export default reducer;
+export { 
+  homeReducer,
+  constants,
+  actionCreators
+};

@@ -24,8 +24,11 @@ export const HomeRight = styled.div `
 export const ArticleListWrapper = styled.div `
   position: relative;
   box-sizing: border-box;
+  a {
+    text-decoration: none;
+  }
 `;
-export const ArticleItem = styled.div `
+export const ArticleItem = styled.div`
   display: flex;
   position: relative;
   margin: 0 0 15px;

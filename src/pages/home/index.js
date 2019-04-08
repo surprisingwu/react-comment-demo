@@ -4,7 +4,7 @@ import Recommend from './components/recommend';
 import Writer from './components/writer';
 import Swipe from '../../common/Swipe';
 import { connect } from 'react-redux';
-import { changeScrollState } from './store/actionCreators';
+import { actionCreators } from './store';
 import {scrollAnimation } from '../../utils/util';
 import {
   HomeWrapper,
@@ -15,6 +15,7 @@ import {
 } from './style';
 
 class Home extends Component {
+  
   render() {
     return (
       <HomeWrapper>
@@ -55,9 +56,9 @@ const mapDispatch = (dispatch) => {
       const scrollTop = document.documentElement.scrollTop
 
       if (scrollTop >= 50) {
-        dispatch(changeScrollState(true))
+        dispatch(actionCreators.changeScrollState(true))
       } else {
-        dispatch(changeScrollState(false))
+        dispatch(actionCreators.changeScrollState(false))
       }
     }
   }
