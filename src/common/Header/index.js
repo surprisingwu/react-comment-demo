@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { CSSTransition } from 'react-transition-group';
-import {Link} from 'react-router-dom';
+import React, { Component } from 'react'
+import { CSSTransition } from 'react-transition-group'
+import { Link } from 'react-router-dom'
 import {
   HeaderWrapper,
   Logo,
@@ -17,10 +17,10 @@ import {
   SearchInfoItem,
   SearchInfoContent,
   SearchInfoHeader
-} from './style';
-import { connect } from 'react-redux';
-import { creators } from './store';
-import {actionCreators} from '../../pages/login/store';
+} from './style'
+import { connect } from 'react-redux'
+import { creators } from './store'
+import { actionCreators } from '../../pages/login/store'
 
 class Header extends Component {
   getSearchArea() {
@@ -91,13 +91,18 @@ class Header extends Component {
         <Link to="/">
           <Logo />
         </Link>
-          <Nav>
-            <NavItem className="left active">首页</NavItem>
+        <Nav>
+          <NavItem className="left active">首页</NavItem>
           <NavItem className="left">下载App</NavItem>
-          {login? 
-            <NavItem className="right" onClick={this.logoutHandler}>退出</NavItem>:
-            <Link to='/login'><NavItem className="right">登录</NavItem></Link>
-          }
+          {login ? (
+            <NavItem className="right" onClick={this.logoutHandler}>
+              退出
+            </NavItem>
+          ) : (
+            <Link to="/login">
+              <NavItem className="right">登录</NavItem>
+            </Link>
+          )}
           <NavItem className="right">
             <i className="iconfont">&#xe636;</i>
           </NavItem>
@@ -114,16 +119,18 @@ class Header extends Component {
             {this.getSearchArea()}
           </SearchWrapper>
         </Nav>
-        <Addition>
-          <Button className="write">
-            <i className="iconfont">&#xe61c;</i> 写文章
-          </Button>
-          <Button className="sign">注册</Button>
-        </Addition>
+        <Link to="/write">
+          <Addition>
+            <Button className="write">
+              <i className="iconfont">&#xe61c;</i> 写文章
+            </Button>
+            <Button className="sign">注册</Button>
+          </Addition>
+        </Link>
       </HeaderWrapper>
     )
   }
-  logoutHandler= () => {
+  logoutHandler = () => {
     console.log(1)
     this.props.logoutHandler()
   }
@@ -135,13 +142,13 @@ const mapStateToProps = state => {
     searchInfo: state.getIn(['header', 'searchInfo']),
     page: state.getIn(['header', 'page']),
     mouseIn: state.getIn(['header', 'mouseIn']),
-    login: state.getIn(['login','login'])
+    login: state.getIn(['login', 'login'])
   }
 }
 const mapDispatchToProps = dispatch => {
   return {
     handleSearchFocus(list) {
-      (list.size === 0) && dispatch(creators.getSearchInfo());
+      list.size === 0 && dispatch(creators.getSearchInfo())
       dispatch(creators.setSearchFocus())
     },
     handleSearchBlur() {
